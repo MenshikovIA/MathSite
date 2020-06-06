@@ -1,0 +1,105 @@
+body{
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* BACKGROUND PARTICLES */
+#particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.navbar{
+    font-family: 'Russo One', sans-serif;
+    position: absolute;
+    alignment: center;
+    display: flex;
+    width: 80%;
+    top: 0px;
+    left: 10%;
+
+}
+
+.jumbotron{
+    padding: 2rem 2rem;
+    position: absolute;
+    alignment: center;
+    display: flex;
+    top: 56px
+}
+
+#login-jumbotron{
+    width: 40%;
+    left: 30%;
+}
+
+#main-page-jumbotron, #profile-jumbotron{
+    width: 80%;
+    left: 10%;
+}
+
+/* LOGIN PAGE CSS */
+
+.login_label{
+    font-size: 1.2em;
+}
+
+.login_form{
+    margin-bottom: 10px;
+}
+
+.signup-redirect{
+    margin-top: 10px;
+}
+
+/* PROFILE PAGE CSS */
+
+.my_fieldset{
+    border: 1px solid grey;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.pb-4{
+    margin-bottom: 0px;
+}
+
+legend.profile_legend{
+    width: inherit;
+    padding: 10px 20px;
+    font-size: 120%;
+    margin-left: 15px;
+    border-bottom: none;
+}
+
+.my_row{
+    margin-bottom: 10px;
+}
+
+
+.profile_avatar_img{
+    max-height: 120px;
+    max-width: 120px;
+    margin-bottom: 10px;
+    horiz-align: center;
+}
+
+.avatar-btn{
+    /*font-size: 0.8em;*/
+    padding: 6px 6px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#id_avatar{
+    display: none;
+}
+
+/* NEW POST */
+
+.note-editable {
+    background-color: white !important;
+}

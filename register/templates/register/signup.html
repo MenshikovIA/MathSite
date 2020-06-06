@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% load static %}
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static '/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="login-jumbotron" class="jumbotron">
+        <div class="container">
+            {% if success %}
+                <div class="row justify-content-md-center text-center">
+                    <div class="col">
+                        <h2 class="display-5">Вы успешно зарегистрировались</h2><br>
+                        <a href="{% url 'index' %}">Вернуться на главную страницу</a>
+                    </div>
+                </div>
+            {%  else %}
+                <div class="row justify-content-md-center text-center">
+                    <div class="col">
+                        <h2 class="display-6">Добро пожаловать!</h2><br>
+                    </div>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col">
+                        <form method="post">
+                            {%  csrf_token %}
+                            <div class="form-group">
+                                {{ form.as_p }}
+                            </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

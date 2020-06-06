@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Login</title>{% endblock %}
+
+{% block content %}
+<div id="login-jumbotron" class="jumbotron">
+    <div class="container">
+        {% if loggedin or user.is_authenticated %}
+            <h1>С возвращением!</h1><br>
+            <a href="{% url 'index' %}">Вернуться на главную</a>
+        {% else %}
+            <div class="row justify-content-md-center text-center">
+                <h2>Представьтесь, пожалуйста</h2>
+            </div>
+            <form action="login.html" method="post">
+            {% csrf_token %}
+                <div class="form-group">
+
+                    <div class="row justify-content-md-center">
+                        <div class="col">
+                            <label class="login_label" for="username">Логин:</label>
+                            <input name="username" type="text" class="form-control login_form" placeholder="Sherlock" id="username">
+
+                            <label class="login_label" for="password">Пароль:</label>
+                            <input name="password" type="password" class="form-control login_form" placeholder="" id="password">
+
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                            {% if error %}
+                                <h5 class="login_label" style="color: red">Неверный логин или пароль</h5>
+                            {% endif %}
+
+                            <div class="border-top signup-redirect">
+                                <span>Еще нет своего аккаунта? <a href="{% url 'signup' %}">Зарегистрируйтесь!</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
