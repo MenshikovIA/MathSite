@@ -26,4 +26,4 @@ urlpatterns = [
     path('register/', include('register.urls')),
     path('admin/', admin.site.urls),
     url(r'^$', MainPageView.as_view(), name='index'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_DIR)
