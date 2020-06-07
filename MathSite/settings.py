@@ -24,7 +24,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = 'ypo&%qakgcq1weudo$&7!$r7k16u+2sts+9g-pix@gn9&zpi)o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'imenshikov.pythonanywhere.com', ]
 

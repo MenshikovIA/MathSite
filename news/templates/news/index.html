@@ -1,9 +1,103 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/news/mainpage.css' %}">
+{% endblock %}
+
+{#                                  {% if user == post.author or user.is_staff %}#}
+{#                                    <a href="{% url 'delete_post' pk=post.id %}" id="delete_btn">(delete post)</a>#}
+{#                                {% endif %}#}
+
 {% block content %}
     <div id="main-page-jumbotron" class="jumbotron">
         <div class="container text-center">
-            <h2>Welcome to my personal site. Make yourself at home!</h2>
+            <div class="row">
+                {% for post in first_group %}
+                    <div class="col-md-4 col-xs-12 text-left">
+                        <div class="card border-light mb-3">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"12"}}</h5></a>
+                                </div>
+                                <div class="blog-post-meta">
+                                    {{ post.created_date }} by {{ post.author }}
+                                </div>
+                                <p class="card-text">
+                                    {% if post.description %}
+                                        {{ post.description|truncatewords:"20" }}
+                                    {% else %}
+                                        {{ post.text|striptags|truncatewords:"20"|safe }}
+                                    {% endif %}
+                                </p>
+                                <div class="blog-post-meta">
+                                    <a id='comments_link' href="{% url 'postdetail' pk=post.id %}">Comments: {{ post.post_comments.count }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                {% for post in second_group %}
+                    <div class="col-md-4 text-left">
+                        <div class="card border-light mb-3">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"12"}}</h5></a>
+                                </div>
+                                <div class="blog-post-meta">
+                                    {{ post.created_date }} by {{ post.author }}
+                                </div>
+                                <p class="card-text">
+                                    {% if post.description %}
+                                        {{ post.description|truncatewords:"20" }}
+                                    {% else %}
+                                        {{ post.text|striptags|truncatewords:"20"|safe }}
+                                    {% endif %}
+                                </p>
+                                <div class="blog-post-meta">
+                                    <a id='comments_link' href="{% url 'postdetail' pk=post.id %}">Comments: {{ post.post_comments.count }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+{#        PAGINATOR          #}
+        {% if post_list.has_other_pages %}
+            <nav class="float-right">
+                <ul class="pagination">
+                    {% if post_list.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ post_list.previous_page_number }}">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for i in post_list.paginator.page_range %}
+                        {% if post_list.number == i %}
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">{{ i }}
+                                    <span class="sr-only">(current)</span>
+                                </span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if post_list.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ post_list.next_page_number }}">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
         </div>
     </div>
 {% endblock %}

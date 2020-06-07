@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% load static %}
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'news/post.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="main-page-jumbotron" class="jumbotron">
+        <div class="container text-center">
+
+                <h3>{{ post.title }}</h3>
+
+            <div class="container text-left">
+                {{ post.text|safe|linebreaks }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

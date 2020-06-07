@@ -1,34 +1,40 @@
+html {height:100%}
+
 body{
     font-family: 'Fira Sans', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100%;
+    position: relative;
+    z-index: -1;
+    min-height:100%
 }
 
 /* BACKGROUND PARTICLES */
 #particles-js {
-    position: absolute;
-    height: 100%;
-    width: 100%;
+    position: absolute !important;
+    min-height: 100vh !important;
+    height: 100% !important;
+    width: 100% !important;
+    left: 0px !important;
+    top: 0px !important;
+    z-index: -1;
+    display: block;
+    overflow: auto;
 }
 
 .navbar{
     font-family: 'Russo One', sans-serif;
-    position: absolute;
-    alignment: center;
+    position: relative;
     display: flex;
-    width: 80%;
-    top: 0px;
-    left: 10%;
-
+    z-index: 1;
 }
 
 .jumbotron{
     padding: 2rem 2rem;
-    position: absolute;
-    alignment: center;
+    position: relative;
     display: flex;
-    top: 56px
+    z-index: 1;
+    margin-bottom: 0px;
 }
 
 #login-jumbotron{
