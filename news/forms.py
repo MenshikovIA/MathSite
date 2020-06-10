@@ -21,4 +21,4 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('text', )
 
-    text = forms.CharField(widget=forms.Textarea(attrs={'id': 'commentarea'}))
+    text = forms.CharField(widget=forms.Textarea(attrs={'id': 'commentarea', 'class': 'form-control', 'rows': '2'}))

@@ -1,13 +1,13 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic import DetailView, ListView
 from django.urls import reverse_lazy, reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from news.forms import PostForm, CommentForm
-from news.models import Post
+from news.models import Post, Comment
 
 
 class MainPageView(View):
@@ -40,7 +40,37 @@ class NewPostView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostView(DetailView):
-    model = Post
-    template_name = 'post_detail.html'
+class PostView(View):
+    @staticmethod
+    def get(request, *args, **kwargs):
+        pk = kwargs['pk']
+        post = get_object_or_404(Post, id=pk)
+        comments = Comment.objects.filter(post_id=pk).order_by('-created_date')
+        return render(request, 'post_detail.html', context={'post': post, 'comments': comments, 'form': CommentForm()})
 
+    def post(self, request, *args, **kwargs):
+        form = CommentForm(request.POST)
+        pk = kwargs['pk']
+        post = get_object_or_404(Post, id=pk)
+        if request.method == 'POST':
+            if form.is_valid():
+                comm = form.save(commit=False)
+                comm.post = post
+                comm.author = request.user
+                comm.save()
+        comments = Comment.objects.filter(post_id=pk).order_by('-created_date')
+        return render(request, 'post_detail.html', context={'post': post, 'comments': comments, 'form': CommentForm()})
+
+
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'delete_post.html'
+    success_url = reverse_lazy('index')
+
+
+class UpdatePostView(LoginRequiredMixin, UpdateView):
+    login_url = 'login'
+    model = Post
+    success_url = reverse_lazy('index')
+    template_name = 'update_post.html'
+    form_class = PostForm

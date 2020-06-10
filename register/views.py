@@ -1,5 +1,5 @@
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
@@ -25,6 +25,11 @@ class SignUpView(View):
             else:
                 user = form.save()
                 user.refresh_from_db()
+                att_permissions = Permission.objects.filter(
+                    codename__in=['add_attachment', 'change_attachment', 'delete_attachment', 'view_attachment']
+                )
+                for p in att_permissions:
+                    user.user_permissions.add(p)
                 login(request, user)
                 self.success = True
                 try:

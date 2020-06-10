@@ -5,3 +5,24 @@
 .note-float-left{
     margin-right: 10px;
 }
+
+.aimg:hover{
+    border-bottom: none;
+}
+.aimg:link {
+    color: #3366a9;
+    text-decoration: none;
+}
+
+.blog-post-meta{
+    color: #999;
+    font-size: 0.8em;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.blog-comment-meta{
+    color: #999;
+    font-size: 0.8em;
+    margin-top: 20px;
+}

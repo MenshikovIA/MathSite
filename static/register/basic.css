@@ -15,8 +15,8 @@ body{
     min-height: 100vh !important;
     height: 100% !important;
     width: 100% !important;
-    left: 0px !important;
-    top: 0px !important;
+    left: 0 !important;
+    top: 0 !important;
     z-index: -1;
     display: block;
     overflow: auto;
@@ -43,6 +43,7 @@ body{
 }
 
 #main-page-jumbotron, #profile-jumbotron{
+    margin-top: 30px;
     width: 80%;
     left: 10%;
 }
@@ -108,4 +109,9 @@ legend.profile_legend{
 
 .note-editable {
     background-color: white !important;
+}
+
+#heading{
+    margin: 10px;
+    font-family: 'Russo One', sans-serif;
 }

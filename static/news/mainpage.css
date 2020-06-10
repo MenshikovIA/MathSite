@@ -1,6 +1,9 @@
 .card-header{
     padding: 0px;
-    min-height: 4.5em;
+    height: 3.2em;
+    background-color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-text{
@@ -11,6 +14,8 @@
 .blog-post-meta{
     color: #999;
     font-size: 0.7em;
+    padding-top: 0.1em;
+    margin-bottom: 0.3em;
 }
 
 .blog-post{

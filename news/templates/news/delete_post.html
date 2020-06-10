@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{%  block title %}
+    <title>Удалить новость</title>
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static '/register/basic.css' %}">
+    <div id="login-jumbotron" class="jumbotron">
+        <div class="container">
+            <h3>Are you sure you want to delete<br><b>"{{ object.title }}"</b>?</h3>
+            <div class="blog-post-meta" style="margin-bottom: 40px">
+                Created: {{ object.created_date }} by {{ object.author }}
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" style="width:100%" class="btn btn-large btn-danger">Yeap, I'm sure.</button>
+                    </form>
+                </div>
+                <div class="col-lg-6 float-left">
+                    <button type="button" style="width:100%" class="btn btn-success" onclick="window.history.back();">No, go back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

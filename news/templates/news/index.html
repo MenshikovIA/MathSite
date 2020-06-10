@@ -3,25 +3,31 @@
 {% block title %}
     {% load static %}
     <link rel="stylesheet" href="{% static '/news/mainpage.css' %}">
+    <title>Сайт Меньшикова Ивана</title>
 {% endblock %}
 
-{#                                  {% if user == post.author or user.is_staff %}#}
-{#                                    <a href="{% url 'delete_post' pk=post.id %}" id="delete_btn">(delete post)</a>#}
-{#                                {% endif %}#}
 
 {% block content %}
     <div id="main-page-jumbotron" class="jumbotron">
         <div class="container text-center">
+            <div class="row">
+                <div class="container h2" id="heading">
+                    <p style="color: #007bff">Свежие новости и актуальные объявления</p>
+                </div>
+            </div>
             <div class="row">
                 {% for post in first_group %}
                     <div class="col-md-4 col-xs-12 text-left">
                         <div class="card border-light mb-3">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"12"}}</h5></a>
+                                    <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"9"}}</h5></a>
                                 </div>
                                 <div class="blog-post-meta">
                                     {{ post.created_date }} by {{ post.author }}
+                                    {% if user == post.author or user.is_staff %}
+                                        <a href="{% url 'postdelete' pk=post.id %}" id="delete_btn">(delete post)</a>
+                                    {% endif %}
                                 </div>
                                 <p class="card-text">
                                     {% if post.description %}
@@ -45,10 +51,13 @@
                         <div class="card border-light mb-3">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"12"}}</h5></a>
+                                    <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"9"}}</h5></a>
                                 </div>
                                 <div class="blog-post-meta">
                                     {{ post.created_date }} by {{ post.author }}
+                                    {% if user == post.author or user.is_staff %}
+                                        <a href="{% url 'postdelete' pk=post.id %}" id="delete_btn">(delete post)</a>
+                                    {% endif %}
                                 </div>
                                 <p class="card-text">
                                     {% if post.description %}
