@@ -10,6 +10,11 @@
 {% block content %}
     <div id="main-page-jumbotron" class="jumbotron">
         <div class="container text-center">
+            <div class="row">
+                <div class="container h2" id="heading">
+                    <p>Предложите новость для публикации</p>
+                </div>
+            </div>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group text-left">

@@ -1,5 +1,5 @@
 from django.urls import re_path
-from news.views import NewPostView, PostView, DeletePostView, UpdatePostView
+from news.views import NewPostView, PostView, DeletePostView, UpdatePostView, DeleteCommentView
 
 
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     re_path('postdetail/(?P<pk>\d+)', PostView.as_view(), name='postdetail'),
     re_path('postdelete/(?P<pk>\d+)', DeletePostView.as_view(), name='postdelete'),
     re_path('postupdate/(?P<pk>\d+)', UpdatePostView.as_view(), name='postupdate'),
+    re_path('commentdelete/(?P<pk>\d+)', DeleteCommentView.as_view(), name='commentdelete'),
 ]

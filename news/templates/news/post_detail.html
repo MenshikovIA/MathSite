@@ -9,10 +9,12 @@
 {% block content %}
     <div id="main-page-jumbotron" class="jumbotron">
         <div class="container">
-            <div class="row">
-                <div class="container text-center">
-                    <h3>{{ post.title|safe }}</h3>
+            <div class="row text-center">
+                <div class="container h2" id="heading">
+                    {{ post.title|linebreaks }}
                 </div>
+            </div>
+            <div class="row">
                 <div class="container text-left">
                     {{ post.text|safe|linebreaks }}
                 </div>
@@ -60,9 +62,12 @@
                         <div class="row border-bottom">
                             <div class="blog-comment-meta float-left">
                                 {{ comment.created_date }} by {{ comment.author }}
+                                {% if user == comment.author or user.is_staff %}
+                                    <a href="{% url 'commentdelete' pk=comment.id %}" class="delete_btn">(delete comment)</a>
+                                {% endif %}
                             </div>
                             <div class="container text-left">
-                                <p>{{ comment|safe|linebreaks }}</p>
+                                {{ comment.text|safe|linebreaks }}
                             </div>
                         </div>
                     {% endfor %}

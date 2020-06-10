@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -66,6 +66,16 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('index')
+
+
+class DeleteCommentView(View):
+    def get(self, request, *args, **kwargs):
+        comment_id = kwargs['pk']
+        comment_obj = get_object_or_404(Comment, id=comment_id)
+        post_id = comment_obj.post_id
+        if request.user.id == comment_obj.author.id or request.user.is_staff:
+            comment_obj.delete()
+        return redirect('postdetail', post_id)
 
 
 class UpdatePostView(LoginRequiredMixin, UpdateView):
