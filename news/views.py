@@ -84,3 +84,9 @@ class UpdatePostView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('index')
     template_name = 'update_post.html'
     form_class = PostForm
+
+
+class AboutView(View):
+    @staticmethod
+    def get(request, *args, **kwargs):
+        return render(request, 'about.html')
