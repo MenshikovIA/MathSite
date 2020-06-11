@@ -14,6 +14,8 @@
                 <div class="container h2" id="heading">
                     <p>Свежие новости и актуальные объявления</p>
                 </div>
+                
+            {# FIRST ROW #}
             </div>
             <div class="row">
                 {% for post in first_group %}
@@ -26,7 +28,7 @@
                                 <div class="blog-post-meta">
                                     {{ post.created_date }} by {{ post.author }}
                                     {% if user == post.author or user.is_staff %}
-                                        <a href="{% url 'postdelete' pk=post.id %}" class="delete_btn">(delete post)</a>
+                                        <a href="{% url 'postdelete' pk=post.id %}" class="delete_btn">(del)</a>
                                     {% endif %}
                                 </div>
                                 <p class="card-text">
@@ -45,6 +47,7 @@
                 {% endfor %}
             </div>
 
+            {# SECOND ROW #}
             <div class="row">
                 {% for post in second_group %}
                     <div class="col-md-4 text-left">
@@ -56,7 +59,7 @@
                                 <div class="blog-post-meta">
                                     {{ post.created_date }} by {{ post.author }}
                                     {% if user == post.author or user.is_staff %}
-                                        <a href="{% url 'postdelete' pk=post.id %}" id="delete_btn">(delete post)</a>
+                                        <a href="{% url 'postdelete' pk=post.id %}" class="delete_btn">(del)</a>
                                     {% endif %}
                                 </div>
                                 <p class="card-text">
