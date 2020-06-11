@@ -25,6 +25,5 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('register/', include('register.urls')),
     path('admin/', admin.site.urls),
-    url(r'^attachments/', include('attachments.urls', namespace='attachments')),
     url(r'^$', MainPageView.as_view(), name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_DIR)

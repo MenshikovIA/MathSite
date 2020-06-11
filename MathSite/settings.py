@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['localhost', 'imenshikov.pythonanywhere.com', ]
 # Application definition
 
 INSTALLED_APPS = [
-    'attachments',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MathSite.wsgi.application'
 FILE_UPLOAD_MAX_SIZE = 20*1024*1024
+DATA_UPLOAD_MAX_MEMORY_SIZE = 20*102*1024
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
