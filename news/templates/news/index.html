@@ -84,7 +84,7 @@
                 <ul class="pagination">
                     {% if post_list.has_previous %}
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ post_list.previous_page_number }}">Previous</a>
+                            <a class="page-link" href="?page={{ post_list.previous_page_number }}">Назад</a>
                         </li>
                     {% endif %}
 
@@ -104,12 +104,38 @@
 
                     {% if post_list.has_next %}
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ post_list.next_page_number }}">Next</a>
+                            <a class="page-link" href="?page={{ post_list.next_page_number }}">Вперед</a>
                         </li>
                     {% endif %}
                 </ul>
             </nav>
         {% endif %}
+        </div>
+    </div>
+
+    <div style="height: 30px; width: 0"></div>
+
+    {#  TWITTER EMBED  #}
+    <div class="jumbotron" id="twitter-jumbotron">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 twitter-post">
+                    <a class="twitter-timeline"
+                       href="https://twitter.com/3blue1brown?ref_src=twsrc%5Etfw"
+                       data-tweet-limit="1">Tweets by 3Blue1Brown</a>
+                </div>
+                <div class="col-md-4 twitter-post">
+                    <a class="twitter-timeline"
+                       href="https://twitter.com/SpaceX?ref_src=twsrc%5Etfw"
+                       data-tweet-limit="1">Tweets by SpaceX</a>
+                </div>
+                <div class="col-md-4 twitter-post">
+                    <a class="twitter-timeline"
+                       href="https://twitter.com/numberphile?ref_src=twsrc%5Etfw"
+                       data-tweet-limit="1">Tweets by Numberphile</a>
+                </div>
+                <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -35,6 +35,7 @@ body{
     display: flex;
     z-index: 1;
     margin-bottom: 0px;
+    margin-top: 0;
 }
 
 #login-jumbotron{
@@ -42,8 +43,7 @@ body{
     left: 30%;
 }
 
-#main-page-jumbotron, #profile-jumbotron{
-    margin-top: 30px;
+#main-page-jumbotron, #profile-jumbotron, #twitter-jumbotron{
     width: 80%;
     left: 10%;
 }
