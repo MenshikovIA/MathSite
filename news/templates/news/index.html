@@ -14,9 +14,9 @@
                 <div class="container h2" id="heading">
                     <p>Свежие новости и актуальные объявления</p>
                 </div>
+            </div>
 
             {# FIRST ROW #}
-            </div>
             <div class="row">
                 {% for post in first_group %}
                     <div class="col-md-4 col-xs-12 text-left">
@@ -26,9 +26,10 @@
                                     <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"9"}}</h5></a>
                                 </div>
                                 <div class="blog-post-meta">
-                                    {{ post.created_date }} by {{ post.author }}
+                                    {{ post.created_date|date:"j.m.Y, H:i" }}, автор:
+                                    <a id="userinfo_link" href="{% url 'userinfo' pk=post.author.id %}">{{ post.author }}</a>
                                     {% if user == post.author or user.is_staff %}
-                                        <a href="{% url 'postdelete' pk=post.id %}" class="delete_btn">(del)</a>
+                                        <a href="{% url 'postdelete' pk=post.id %}" class="delete_btn">(удалить)</a>
                                     {% endif %}
                                 </div>
                                 <p class="card-text">
@@ -57,9 +58,10 @@
                                     <a href="{% url 'postdetail' pk=post.id %}"> <h5>{{ post.title|truncatewords:"9"}}</h5></a>
                                 </div>
                                 <div class="blog-post-meta">
-                                    {{ post.created_date }} by {{ post.author }}
+                                    {{ post.created_date|date:"j.m.Y, H:i" }}, автор:
+                                    <a id="userinfo_link" href="{% url 'userinfo' pk=post.author.id %}">{{ post.author }}</a>
                                     {% if user == post.author or user.is_staff %}
-                                        <a href="{% url 'postdelete' pk=post.id %}" class="delete_btn">(del)</a>
+                                        <a href="{% url 'postdelete' pk=post.id %}" class="delete_btn">(удалить)</a>
                                     {% endif %}
                                 </div>
                                 <p class="card-text">

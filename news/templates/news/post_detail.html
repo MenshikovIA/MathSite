@@ -19,8 +19,8 @@
                     {{ post.text|safe|linebreaks }}
                 </div>
             </div>
-            {% if post.author.id == user.id or user.is_staff %}
-                <div class="row container">
+            <div class="row">
+                {% if post.author.id == user.id or user.is_staff %}
                     <div class="blog-post-meta" style="margin-left: 0">
                         <a class="aimg" href="{% url 'postupdate' pk=post.id %}">
                             <img border="0" width="32px" height="32px" src="{% static 'icons/edit.png' %}">
@@ -29,31 +29,32 @@
                             <img border="0" width="32px" height="32px" src="{% static 'icons/delete.png' %}">
                         </a>
                     </div>
-                    <div class="blog-post-meta">
-                        Created: {{ post.created_date }} by {{ post.author }}<br>
-                        Last modified: {{ post.modified_date }}
-                    </div>
+                {% endif %}
+                <div class="blog-post-meta">
+                    Пост создан {{ post.created_date|date:"j.m.Y, H:i" }}, автор:
+                    <a id="userinfo_link" href="{% url 'userinfo' pk=post.author.id %}">{{ post.author }}</a><br>
+                    Изменен: {{ post.modified_date|date:"j.m.Y, H:i" }}
+                </div>
 
-                </div>
-            {% endif %}
-{#        NEW COMMENT FORM        #}
-        <div class="h4">Комментарии</div>
-
-        <form enctype="multipart/form-data" method="post">
-            {% csrf_token %}
-            <div class="form-row">
-                <div class="col-sm-11">
-                    {{ form.text }}
-                </div>
-                <div class="col-sm-1">
-                    {% if user.is_authenticated %}
-                        <button type="submit" class="btn btn-primary">Отправить</button>
-                    {% else %}
-                        <button class="btn btn-secondary mb-2" style="font-size: 0.7em" disabled>Login<br>to comment</button>
-                    {% endif %}
-                </div>
             </div>
-        </form>
+{#        NEW COMMENT FORM        #}
+            <div class="h4">Комментарии</div>
+
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-sm-11">
+                        {{ form.text }}
+                    </div>
+                    <div class="col-sm-1">
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        {% else %}
+                            <button class="btn btn-secondary mb-2" style="font-size: 0.7em" disabled>Login<br>to comment</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
 
 
 {#        COMMENTS SECTION        #}
@@ -62,9 +63,10 @@
                     {% for comment in comments %}
                         <div class="row border-bottom">
                             <div class="blog-comment-meta float-left">
-                                {{ comment.created_date }} by {{ comment.author }}
+                                {{ comment.created_date|date:"j.m.Y, H:i" }}, автор:
+                                <a id="userinfo_link" href="{% url 'userinfo' pk=comment.author.id %}">{{ comment.author }}</a><br>
                                 {% if user == comment.author or user.is_staff %}
-                                    <a href="{% url 'commentdelete' pk=comment.id %}" class="delete_btn">(delete comment)</a>
+                                    <a href="{% url 'commentdelete' pk=comment.id %}" class="delete_btn">(удалить)</a>
                                 {% endif %}
                             </div>
                             <div class="container text-left">

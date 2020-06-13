@@ -2,7 +2,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User, Permission
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.hashers import check_password
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from register import forms
 from register.models import MyUser
@@ -132,3 +132,13 @@ class LoginView(View):
         else:
             return render(request, 'login.html', {'loggedin': self.loggedin, 'error': 'Wrong login or password!'})
         return render(request, 'login.html', {'loggedin': self.loggedin, 'error': ''})
+
+
+class UserInfoView(View):
+
+    @staticmethod
+    def get(request, *args, **kwargs):
+        user_id = kwargs['pk']
+        userinfo = get_object_or_404(User, id=user_id)
+        avatar = get_object_or_404(MyUser, user_id=user_id).avatar
+        return render(request, 'userinfo.html', context={'userinfo': userinfo, 'avatar': avatar})

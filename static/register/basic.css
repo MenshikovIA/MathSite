@@ -105,6 +105,10 @@ legend.profile_legend{
     display: none;
 }
 
+#userinfo_link{
+    color: grey;
+}
+
 /* NEW POST */
 
 .note-editable {
