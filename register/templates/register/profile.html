@@ -79,7 +79,7 @@
                         <legend class="profile_legend">Аватар</legend>
                         <form action="profile.html" method="post" enctype="multipart/form-data" id="av_form">
                             <div class="text-center">
-                                <img class="profile_avatar_img" src="{{ request.user.myuser.avatar.url }}">
+                                <img class="profile_avatar_img" src="{% get_media_prefix %}{{ request.user.myuser.avatar }}">
 
                                     {% csrf_token %}
                                     {{ form_av.avatar }}
