@@ -64,7 +64,7 @@
                         <div class="row border-bottom">
                             <div class="blog-comment-meta float-left">
                                 {{ comment.created_date|date:"j.m.Y, H:i" }}, автор:
-                                <a id="userinfo_link" href="{% url 'userinfo' pk=comment.author.id %}">{{ comment.author }}</a><br>
+                                <a id="userinfo_link" href="{% url 'userinfo' pk=comment.author.id %}">{{ comment.author }}</a>
                                 {% if user == comment.author or user.is_staff %}
                                     <a href="{% url 'commentdelete' pk=comment.id %}" class="delete_btn">(удалить)</a>
                                 {% endif %}
