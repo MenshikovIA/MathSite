@@ -28,7 +28,7 @@ class SignUpView(View):
                 login(request, user)
                 self.success = True
                 try:
-                    MyUser.objects.create(user_id=user.id, avatar='profile_pics/default.png')
+                    MyUser.objects.create(user_id=user.id, avatar='register/profile_pics/default.png')
                 except Exception:
                     print(Exception)
 
