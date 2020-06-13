@@ -140,5 +140,9 @@ class UserInfoView(View):
     def get(request, *args, **kwargs):
         user_id = kwargs['pk']
         userinfo = get_object_or_404(User, id=user_id)
-        avatar = get_object_or_404(MyUser, user_id=user_id).avatar
+        user_avatar = MyUser.objects.filter(user_id=user_id)
+        if user_avatar.exists():
+            avatar = user_avatar[0].avatar
+        else:
+            avatar = 'register/profile_pics/default.png'
         return render(request, 'userinfo.html', context={'userinfo': userinfo, 'avatar': avatar})
