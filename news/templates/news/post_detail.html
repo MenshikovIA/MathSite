@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="container text-left">
+                <div id="post-text" class="container text-left">
                     {{ post.text|safe|linebreaks }}
                 </div>
             </div>
@@ -69,7 +69,7 @@
                                     <a href="{% url 'commentdelete' pk=comment.id %}" class="delete_btn">(удалить)</a>
                                 {% endif %}
                             </div>
-                            <div class="container text-left">
+                            <div class="container text-left comment-text">
                                 {{ comment.text|safe|linebreaks }}
                             </div>
                         </div>
