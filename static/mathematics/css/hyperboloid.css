@@ -1,0 +1,51 @@
+#gratitude {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    text-align: right;
+}
+
+.a-gratitude {
+    color: grey;
+    font-size: 0.7em;
+}
+
+#return_btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+body {
+  background-color: #111;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  min-height: 100vh;
+}
+
+#main {
+  position: relative;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+canvas:first-child {
+  position: static;
+  opacity: 0.25;
+}
+
+#controller {
+  position: fixed;
+  top: 0;
+  right: 0;
+}

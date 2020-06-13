@@ -1,0 +1,115 @@
+#gratitude {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    text-align: right;
+}
+
+.a-gratitude {
+    color: grey;
+    font-size: 0.7em;
+}
+
+#return_btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+body {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#main {
+    position: relative;
+    max-width: 90vmin;
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+canvas:first-child {
+    position: static;
+}
+
+#controller {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#box {
+    border: 1px solid rgb(51, 153, 255);
+    background-color: rgba(51, 153, 255, 0.4);
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    visibility: hidden;
+}
+
+#box.anim {
+    -webkit-animation: box 4s linear 1s infinite;
+    animation: box 4s linear 1s infinite;
+}
+
+@-webkit-keyframes box {
+    from {
+        visibility: visible;
+        width: 0;
+        height: 0;
+    }
+    20% {
+        width: 20%;
+        height: 20%;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        width: 20%;
+        height: 20%;
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        width: 0;
+        height: 0;
+    }
+}
+
+@keyframes box {
+    from {
+        visibility: visible;
+        width: 0;
+        height: 0;
+    }
+    20% {
+        width: 20%;
+        height: 20%;
+    }
+    40% {
+        opacity: 1;
+    }
+    50% {
+        width: 20%;
+        height: 20%;
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        width: 0;
+        height: 0;
+    }
+}

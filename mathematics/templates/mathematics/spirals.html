@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'register/fav32.png' %}" />
+    <title>Спирали | Сайт Меньшикова Ивана</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="{% static '/register/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdn.rawgit.com/dataarts/dat.gui/master/build/dat.gui.min.js'>
+    <link rel='stylesheet' href='https://codepen.io/handsomeone/pen/KgqaAO.css'>
+    <link rel="stylesheet" href="{% static 'mathematics/css/spirals.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+<body>
+    <div id="main">
+        <canvas></canvas>
+        <canvas></canvas>
+        <canvas></canvas>
+    </div>
+    <div id="controller"></div>
+
+    <button id="return_btn" type="submit" class="btn btn-primary"
+            onclick="window.location.href='{% url 'index' %}'; return false;">На главную</button>
+
+    <div id="gratitude">
+        <a target="_blank" href="https://codepen.io/handsomeone">Thanks to Zhou Qi</a>
+    </div>
+
+
+    <script src='https://codepen.io/handsomeone/pen/KgqaAO.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.1/dat.gui.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js'></script>
+    <script type="text/javascript" src="{% static 'mathematics/js/spirals.js' %}"></script>
+</body>
+</html>

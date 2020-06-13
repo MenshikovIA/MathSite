@@ -1,0 +1,48 @@
+body {
+  /*background-color: #ffd;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0) 29px, rgba(0, 0, 0, .05) 29px, rgba(0, 0, 0, .05) 30px), linear-gradient(90deg, rgba(0, 0, 0, 0) 29px, rgba(0, 0, 0, .05) 29px, rgba(0, 0, 0, .05) 30px);*/
+  background-size: 30px 30px, 30px 30px;
+}
+
+#main {
+  position: relative;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+canvas:first-child {
+  position: static;
+}
+
+#controller {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#gratitude{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+#gratitude a{
+  color: grey;
+  font-size: 0.8em;
+}
+
+#return_btn{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}

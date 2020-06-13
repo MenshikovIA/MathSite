@@ -9,6 +9,10 @@ body{
     min-height:100%
 }
 
+#main-navbar{
+    z-index: 2;
+}
+
 /* BACKGROUND PARTICLES */
 #particles-js {
     position: absolute !important;

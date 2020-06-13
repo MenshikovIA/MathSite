@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'register',
     'news',
+    'mathematics',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'news/templates/news'),
                  os.path.join(BASE_DIR, 'register/templates/register'),
+                os.path.join(BASE_DIR, 'mathematics/templates/mathematics'),
                  ]
         ,
         'APP_DIRS': True,
