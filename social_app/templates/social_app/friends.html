@@ -3,7 +3,7 @@
 {% block title %}<title>Тестовое задание</title>{% endblock %}
 
 {% block content %}
-    <div id="login-jumbotron" class="jumbotron">
+    <div id="login-jumbotron" class="jumbotron" style="height: 1000px">
         <div class="container">
             <div class="container text-center border-bottom">
                 <h4>
@@ -13,7 +13,7 @@
                 <img src="{{ vk_user.photo_200 }}" style="border-radius: 6px; margin-bottom: 30px">
             </div>
             <div class="container" style="margin: 20px 0px">
-                <p>Вы знаете этих людей?</p>
+                <p>Наш ИИ проанализировал карту звездного неба и пришел к выводу, что вы можете знать этих людей:</p>
                 {% for friend in friends %}
                     <p>
                         <img src="{{ friend.photo_100 }}" style="border-radius: 6px; margin-right: 10px">
