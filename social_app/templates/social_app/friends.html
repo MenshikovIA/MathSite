@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Тестовое задание</title>{% endblock %}
+
+{% block content %}
+    <div id="login-jumbotron" class="jumbotron">
+        <div class="container">
+            <div class="container text-center border-bottom">
+                <h4>
+                    Добро пожаловать,
+                    <a href="https://vk.com/{{ vk_user.domain }}">{{ vk_user.last_name }} {{ vk_user.first_name }}</a>
+                </h4>
+                <img src="{{ vk_user.photo_200 }}" style="border-radius: 6px; margin-bottom: 30px">
+            </div>
+            <div class="container" style="margin: 20px 0px">
+                <p>Вы знаете этих людей?</p>
+                {% for friend in friends %}
+                    <p>
+                        <img src="{{ friend.photo_100 }}" style="border-radius: 6px; margin-right: 10px">
+                        <a href="https://vk.com/{{ friend.domain }}">{{ friend.first_name }} {{ friend.last_name }}</a>
+                        {% if friend.online %}
+                            <span style="color: gray"> online </span>
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

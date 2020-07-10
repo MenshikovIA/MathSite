@@ -26,7 +26,7 @@ SECRET_KEY = 'ypo&%qakgcq1weudo$&7!$r7k16u+2sts+9g-pix@gn9&zpi)o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'imenshikov.pythonanywhere.com', ]
+ALLOWED_HOSTS = ['localhost', 'imenshikov.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django_social_auth-0.7.28-py3.8.egg-info',
+    'social_django',
     'register',
     'news',
     'mathematics',
+    'social_app',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'MathSite.urls'
@@ -71,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -137,3 +141,26 @@ STATICFILES_DIRS = [
     STATIC_DIR,
     MEDIA_DIR,
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.vk.VKOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.social_auth.social_details',
+#     'social_core.pipeline.social_auth.social_uid',
+#     'social_core.pipeline.social_auth.social_user',
+#     'social_core.pipeline.user.get_username',
+#     'social_core.pipeline.social_auth.associate_by_email',
+#     'social_core.pipeline.user.create_user',
+#     'social_core.pipeline.social_auth.associate_user',
+#     'social_core.pipeline.social_auth.load_extra_data',
+#     'social_core.pipeline.user.user_details',
+# )
+
+LOGIN_REDIRECT_URL = '/test/friends'
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['friends', 'offline', 'groups', 'email']
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7535283'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = '040YuDSjjUKnleCqmwo9'
