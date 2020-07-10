@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Вход</title>{% endblock %}
+
+{% block content %}
+    <div id="login-jumbotron" class="jumbotron">
+        <div class="container">
+            <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+            <script type="text/javascript">
+                VK.init({apiId: 7535283});
+            </script>
+
+            <!-- VK Widget -->
+            <div id="vk_auth"></div>
+            <script type="text/javascript">
+                VK.Widgets.Auth("vk_auth", {"width":400,"authUrl":"/test"});
+            </script>
+        </div>
+    </div>
+{% endblock %}

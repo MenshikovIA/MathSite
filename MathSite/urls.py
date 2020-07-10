@@ -18,7 +18,7 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include
-from news.views import MainPageView
+from news.views import MainPageView, TestView
 
 
 urlpatterns = [
@@ -26,5 +26,6 @@ urlpatterns = [
     path('register/', include('register.urls')),
     path('mathematics/', include('mathematics.urls')),
     path('admin/', admin.site.urls),
+    path('test/', TestView.as_view(), name='test'),
     url(r'^$', MainPageView.as_view(), name='index'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_DIR)

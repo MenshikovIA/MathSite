@@ -9,6 +9,11 @@ from news.forms import PostForm, CommentForm
 from news.models import Post, Comment
 
 
+class TestView(View):
+    def get(self, request):
+        return render(request, 'test.html')
+
+
 class MainPageView(View):
     @staticmethod
     def get(request, *args, **kwargs):
