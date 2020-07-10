@@ -48,7 +48,7 @@ body{
 }
 
 .jumbotron{
-    padding: 2rem 2rem;
+    padding: 2rem 2rem!important;
     position: relative;
     display: flex;
     z-index: 1;
